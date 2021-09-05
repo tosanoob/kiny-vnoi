@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int* a = new int[1000];
+	int n,m,k;
+	
+  cin>>n>>m>>k;
+	for (int i = 0;i<n;i++) 
+	cin>>a[i];
+	
+	//sapxep
+	for (int i=0;i<n-1;i++)
+	for (int j=n-1;j>i;j--)
+		if (a[i]>a[j])
+		{int c;
+		c=a[i];a[i]=a[j];a[j]=c;
+		 } 
+	
+	//mang cong don
+	for (int i = 1;i<n;i++)
+	a[i]=a[i]+a[i-1];
+	
+	int c=-2;
+	//xet hieu giua so thu i va so thu i-m+1
+	for (int i=n-1;i-m+1>0;i--)
+	if (a[i]-a[i-1]-(a[i-m+1]-a[i-m])<=k)
+	{c=i;
+	break;
+	}
+	
+	//tong la a[i]-a[i-m]
+	cout<<a[c]-a[c-m];
+		
+	delete []a;
+	return 0;
+
+}
